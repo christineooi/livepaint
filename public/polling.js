@@ -13,17 +13,13 @@ function fetchUpdates(){
     fetch('/updates', postRequestOptions)
     .then(response => response.json())
     .then(data => {
-        // console.log("In fetch - data: ", data);
         let newestUpdates = data.updates;
         let latestSequenceNum = data.sequenceNum;
-        // console.log("newestUpdates.length: ", newestUpdates.length);
         // If there are new updates, replay to sync-up
-        if (newestUpdates.length > 0){
-            for(let i=0; i < newestUpdates.length; i++){
-                console.log("In loop to call setColor: ", newestUpdates[i][0], newestUpdates[i][1], newestUpdates[i][2]);
-                bitmap.setColor(newestUpdates[i][0], newestUpdates[i][1], newestUpdates[i][2]);
-            }
+        for(let i=0; i < newestUpdates.length; i++){
+            bitmap.setColor(newestUpdates[i][0], newestUpdates[i][1], newestUpdates[i][2]);
         }
+    
         // Reset clientupdates
         clientupdates = [];
         // Set sequence number to highest-seen index number
