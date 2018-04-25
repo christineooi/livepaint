@@ -1,6 +1,6 @@
 let timeoutID;
-let sequenceNum = -1;
-// Add logic to this script to poll server every second for updated pixels.
+let sequenceNum = 0;
+// Poll server every second for updated pixels.
 function fetchUpdates(){
     const postRequestOptions = {
         method: "POST",
