@@ -17,7 +17,7 @@ function fetchUpdates(){
         let latestSequenceNum = data.sequenceNum;
         // If there are new updates, replay to sync-up
         for(let i=0; i < newestUpdates.length; i++){
-            bitmap.setColor(newestUpdates[i][0], newestUpdates[i][1], newestUpdates[i][2]);
+            bitmap.setColor(newestUpdates[i][0], newestUpdates[i][1], newestUpdates[i][2],true);
         }
     
         // Reset clientupdates

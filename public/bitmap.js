@@ -30,11 +30,14 @@ Bitmap.prototype.render = function(target_element) {
 
 let clientupdates = [];
 
-Bitmap.prototype.setColor = function(row, col, color) {
+Bitmap.prototype.setColor = function(row, col, color, isRemote) {
     this.grid[row][col] = color;
     this.cells[row][col].style.background = color;
-    operation = [row, col, color];
-    clientupdates.push(operation);
+    if(!isRemote){
+        operation = [row, col, color];
+        clientupdates.push(operation);
+    }
+    
 }
 
 Bitmap.prototype.handleEvent = function(event) {

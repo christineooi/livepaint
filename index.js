@@ -14,16 +14,15 @@ app.post('/updates', function (req, res, next) {
     let clientupdates = req.body.clientupdates;
     let sequenceNum = req.body.sequenceNum;
 
-    if (clientupdates.length > 0){
-        // Adds latest updates to updates array
-        updates = updates.concat(clientupdates);
-        // adds latest updates to newestUpdate array
-        newestUpdate = updates.slice(sequenceNum);
+    // Adds latest updates to updates array
+    updates = updates.concat(clientupdates);
+    // adds latest updates to newestUpdate array
+    newestUpdate = updates.slice(sequenceNum);
       
-        // Update sequence number
-        sequenceNum = updates.length;
-    }
-    res.send({updates: updates, sequenceNum: sequenceNum});
+    // Update sequence number
+    sequenceNum = updates.length;
+
+    res.send({updates: newestUpdate, sequenceNum: sequenceNum});
 })
 
 app.listen(port)
